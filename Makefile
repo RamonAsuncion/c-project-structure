@@ -1,14 +1,15 @@
-CC = gcc -I ./include
-CFLAGS = -std=gnu99 -Wall -g #-DDEBUG
+CC=gcc
+CFLAGS=-I./include -std=gnu99 -Wall -g #-DDEBUG
+LDFLAGS=
 
-#CC = g++ -I ./include
-#CFLAGS = -std=c++20 -Wall -g #-DDEBUG
+#CC=g++ -I ./include
+#CFLAGS=-std=c++20 -Wall -g #-DDEBUG
 
-INC = ./include
-SRC = ./src
-OBJ = ./obj
-DOC = ./doc
-BIN = ./bin
+INC=./include
+SRC=./src
+OBJ=./obj
+DOC=./doc
+BIN=./bin
 
 vpath %.h ./include
 vpath %.c ./src
