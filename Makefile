@@ -29,7 +29,7 @@ doc:
 
 main: main.c
 	@ mkdir -p $(BIN)
-	$(CC) $(CFLAGS) $(SRC)/main.c -o $(BIN)/$@
+	$(CC) $(CFLAGS) $(SRC)/main.c -o $(BIN)/$@ $(LDFLAGS)
 
 #main: main.cpp
 #	@ mkdir -p $(BIN)
