@@ -1,41 +1,17 @@
-CC=gcc
-CFLAGS=-I./include -std=gnu99 -Wall -g #-DDEBUG
-LDFLAGS=
+CFLAGS=-Isrc -Wall -Wextra # -g -DDEBUG
+SRC=src
+BIN=bin
 
-#CC=g++ -I ./include
-#CFLAGS=-std=c++20 -Wall -g #-DDEBUG
+main: src/main.c | mkbin
+	$(CC) $(CFLAGS) src/main.c -o $(BIN)/main
 
-INC=./include
-SRC=./src
-OBJ=./obj
-DOC=./doc
-BIN=./bin
-
-vpath %.h ./include
-vpath %.c ./src
-
-#vpath %.hpp ./include
-#vpath %.cpp ./src
-
-EXECS = main
-
-all: mkpaths $(EXECS)
-
-mkpaths:
-	@ mkdir -p $(OBJ)
+mkbin:
 	@ mkdir -p $(BIN)
+
 doc:
 	doxygen
 
-main: main.c
-	@ mkdir -p $(BIN)
-	$(CC) $(CFLAGS) $(SRC)/main.c -o $(BIN)/$@ $(LDFLAGS)
-
-#main: main.cpp
-#	@ mkdir -p $(BIN)
-#	$(CC) $(CFLAGS) $(SRC)/main.cpp -o $(BIN)/$@
-
-.PHONY: clean
+.PHONY: main mkbin doc clean
 clean:
-	/bin/rm -rf $(BIN)/* $(OBJ)/* core* *~ $(SRC)/*~ $(INC)/*~ $(DOC)/*
+	@ rm -rf $(BIN)/* core* *~ src/*~ docs/* *.dSYM
 
